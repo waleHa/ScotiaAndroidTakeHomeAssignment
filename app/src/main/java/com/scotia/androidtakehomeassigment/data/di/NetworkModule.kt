@@ -1,6 +1,6 @@
 package com.scotia.androidtakehomeassigment.data.di
 
-import com.scotia.androidtakehomeassigment.data.GithubRemoteDataSource
+import com.scotia.androidtakehomeassigment.data.datasource.GithubRemoteDataSource
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

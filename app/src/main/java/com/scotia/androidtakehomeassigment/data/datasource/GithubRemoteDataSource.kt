@@ -1,4 +1,4 @@
-package com.scotia.androidtakehomeassigment.data
+package com.scotia.androidtakehomeassigment.data.datasource
 
 import com.scotia.androidtakehomeassigment.domain.model.GithubRepo
 import com.scotia.androidtakehomeassigment.domain.model.GithubUser
