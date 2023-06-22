@@ -1,5 +1,6 @@
 package com.scotia.androidtakehomeassigment.data.di
 
+import com.scotia.androidtakehomeassigment.data.GithubRemoteDataSource
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -21,6 +22,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGithubApi(retrofit: Retrofit): GithubApi =
-        retrofit.create(GithubApi::class.java)
+    fun provideGithubApi(retrofit: Retrofit): GithubRemoteDataSource =
+        retrofit.create(GithubRemoteDataSource::class.java)
 }
