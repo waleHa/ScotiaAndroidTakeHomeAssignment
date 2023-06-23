@@ -5,6 +5,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
+/**
+ * Data class representing a GitHub owner.
+ *
+ * @property login the login name of the owner
+ */
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class GithubOwner(

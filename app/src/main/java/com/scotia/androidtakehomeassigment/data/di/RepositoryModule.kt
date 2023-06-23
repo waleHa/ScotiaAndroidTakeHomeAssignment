@@ -9,10 +9,16 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-// Provides the GithubRepository instance
+
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
+    /**
+     * Provides an instance of the [GithubRepository] implementation.
+     *
+     * @param githubRemoteDataSource the [GithubRemoteDataSource] used for accessing the GitHub API
+     * @return the [GithubRepository] instance
+     */
     @Provides
     @Singleton
     fun provideRepositoryGithub(githubRemoteDataSource: GithubRemoteDataSource): GithubRepository {

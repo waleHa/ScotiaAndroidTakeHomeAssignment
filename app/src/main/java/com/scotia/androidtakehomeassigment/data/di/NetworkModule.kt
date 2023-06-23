@@ -16,32 +16,51 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    // Provides Moshi instance
+    /**
+     * Provides a Moshi instance for JSON serialization and deserialization.
+     *
+     * @return the Moshi instance
+     */
     @Provides
     @Singleton
     fun provideMoshi(): Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 
-    // Provides Converter Factory instance
-
+    /**
+     * Provides a Converter Factory instance for Retrofit.
+     *
+     * @param moshi the Moshi instance used for JSON conversion
+     * @return the Converter Factory instance
+     */
     @Provides
     @Reusable
     fun provideConverterFactory(moshi: Moshi): Converter.Factory {
         return MoshiConverterFactory.create(moshi)
     }
 
-    // Provides Retrofit instance
+    /**
+     * Provides a Retrofit instance for network operations.
+     *
+     * @param factory the Converter Factory instance used for JSON conversion
+     * @return the Retrofit instance
+     */
     @Provides
     @Singleton
-    fun provideRetrofit( factory: Converter.Factory): Retrofit = Retrofit.Builder()
+    fun provideRetrofit(factory: Converter.Factory): Retrofit = Retrofit.Builder()
         .baseUrl("https://api.github.com/")
         .addConverterFactory(factory)
         .build()
 
-    // Provides GithubRemoteDataSource instance
+    /**
+     * Provides a GithubRemoteDataSource instance for accessing GitHub API.
+     *
+     * @param retrofit the Retrofit instance used for network operations
+     * @return the GithubRemoteDataSource instance
+     */
     @Provides
     @Singleton
     fun provideGithubApi(retrofit: Retrofit): GithubRemoteDataSource =
         retrofit.create(GithubRemoteDataSource::class.java)
 }
+
