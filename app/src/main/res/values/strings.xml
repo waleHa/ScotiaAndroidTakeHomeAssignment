@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Android Take Home Assigment</string>
+    <string name="app_name">Take Home</string>
     <string name="enter_user_id_label">Enter a github user id</string>
 </resources>
