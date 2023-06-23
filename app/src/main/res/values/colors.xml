@@ -13,4 +13,6 @@
     <color name="grey">#A1A1A1</color>
     <color name="pink">#FE6096</color>
     <color name="dark_grey">#868686</color>
+    <color name="gold">#FFD700</color>
+    <color name="red">#DC143C</color>
 </resources>

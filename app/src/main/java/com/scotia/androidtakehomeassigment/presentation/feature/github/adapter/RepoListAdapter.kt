@@ -1,7 +1,6 @@
 package com.scotia.androidtakehomeassigment.presentation.feature.github.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -10,26 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scotia.androidtakehomeassigment.R
 import com.scotia.androidtakehomeassigment.databinding.RepoItemBinding
 import com.scotia.androidtakehomeassigment.domain.model.GithubRepo
-class RepoListAdapter : ListAdapter<GithubRepo, RepoListAdapter.ViewHolder>(DiffCallback()) {
 
-    // inflate the layout with data binding, and return the ViewHolder
+class RepoListAdapter(private val onRepoClicked: (GithubRepo) -> Unit) : ListAdapter<GithubRepo, RepoListAdapter.ViewHolder>(DiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: RepoItemBinding = DataBindingUtil.inflate(inflater, R.layout.repo_item, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, onRepoClicked)
     }
 
-    // use the ViewHolder's bind method to bind the current item
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    // ViewHolder now takes a RepoItemBinding argument
-    class ViewHolder(private val binding: RepoItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        // bind the GithubRepo data to the binding
+    class ViewHolder(private val binding: RepoItemBinding, private val onRepoClicked: (GithubRepo) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(repo: GithubRepo) {
             binding.repo = repo
-            binding.executePendingBindings() // This is important, as it forces the data binding to occur immediately.
+            binding.root.setOnClickListener { onRepoClicked(repo) }
+            binding.executePendingBindings()
         }
     }
 

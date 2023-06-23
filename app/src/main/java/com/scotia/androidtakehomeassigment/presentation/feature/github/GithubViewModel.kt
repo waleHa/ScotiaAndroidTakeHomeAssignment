@@ -38,6 +38,9 @@ class GithubViewModel @Inject constructor(
     private val _reposLoading = MutableStateFlow<Boolean>(false)
     val reposLoading: StateFlow<Boolean> = _reposLoading
 
+    private val _totalForksBadge = MutableStateFlow<String>("")
+    val totalForksBadge: StateFlow<String> = _totalForksBadge
+
     fun setUserId(userId: String){
         getUserId(userId)
         loadRepo(userId)
@@ -65,6 +68,16 @@ class GithubViewModel @Inject constructor(
                 _reposError.emit(e)
             }
             _reposLoading.emit(false)
+        }
+    }
+
+    fun loadTotalForksBadge(userId: String) {
+        viewModelScope.launch {
+            try {
+                _totalForksBadge.emit(userUseCase.getTotalForksBadge(userId))
+            } catch (e: Exception) {
+                _userError.emit(e)
+            }
         }
     }
 }

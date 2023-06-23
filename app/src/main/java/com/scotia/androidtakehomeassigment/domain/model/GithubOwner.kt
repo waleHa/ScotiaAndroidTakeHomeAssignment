@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class GithubUser(
-    @Json(name = "name") val name: String?,
-    @Json(name = "avatar_url") val avatarUrl: String?
-): Parcelable
+data class GithubOwner(
+    @Json(name = "login") val login: String?
+) : Parcelable

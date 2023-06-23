@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="repo"
+            type="com.scotia.androidtakehomeassigment.domain.model.GithubRepo" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/forks_badge_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/red"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/repo_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{"Repo name: " + repo.name}'
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="repo_name" />
+
+            <TextView
+                android:id="@+id/repo_description_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Description: " + repo.description}'
+                android:textSize="16sp"
+                tools:text="repo_description" />
+
+            <TextView
+                android:id="@+id/repo_updated_at_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Updated at: " + repo.updatedAt}'
+                android:textSize="16sp"
+                tools:text="updated_at_repo" />
+
+            <TextView
+                android:id="@+id/repo_stargazers_count_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Stars: " + String.valueOf(repo.stars)}'
+                android:textSize="16sp"
+                tools:text="stargazers_count" />
+
+            <TextView
+                android:id="@+id/repo_forks_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Forks: " + String.valueOf(repo.forks)}'
+                android:textSize="16sp"
+                tools:text="stargazers_count" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

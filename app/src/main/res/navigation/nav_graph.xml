@@ -1,0 +1,32 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.scotia.androidtakehomeassigment.presentation.feature.github.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_HomeFragment_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
+        <argument
+            android:name="repo"
+            app:argType="com.scotia.androidtakehomeassigment.domain.model.GithubRepo"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailFragment"
+        android:name="com.scotia.androidtakehomeassigment.presentation.feature.github.Detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="repo"
+            app:argType="com.scotia.androidtakehomeassigment.domain.model.GithubRepo"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>
